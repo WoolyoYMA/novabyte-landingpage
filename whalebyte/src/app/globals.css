@@ -1,6 +1,14 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+/* Wir schreiben das Body-Styling jetzt in normales CSS, 
+   damit der Vercel-Compiler nicht abstürzt */
+body {
+  background-color: #FFFFFF;
+  color: #0A0A0A;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Inter', sans-serif;
+}
 
 :root {
   --black: #0A0A0A;
@@ -8,13 +16,6 @@
   --bg-alt: #F7F7F7;
   --sub: #666666;
   --border: #E8E8E8;
-}
-
-@layer base {
-  body {
-    @apply bg-white text-[#0A0A0A] antialiased;
-    font-family: 'Inter', sans-serif;
-  }
 }
 
 /* Marquee Animation */
