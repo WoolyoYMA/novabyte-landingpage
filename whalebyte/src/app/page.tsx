@@ -100,14 +100,22 @@ export default function LandingPage() {
       </nav>
 
       {/* MOBILE MENU */}
-      <div className={`fixed top-[68px] left-0 right-0 bg-white border-b border-[#E8E8E8] transition-all duration-500 overflow-hidden z-[899] ${isMobileMenuOpen ? 'max-h-[500px]' : 'max-h-0'}`}>
-        <div className="p-5 flex flex-col gap-1">
-          {['Problem', 'Funktionen', 'Live Demo', 'Preise', 'Referenzen', 'FAQ'].map((item) => (
-            <a key={item} href={`#${item.toLowerCase().replace(' ', '-')}`} className="py-3 text-base font-semibold text-[#666666] border-b border-[#E8E8E8] hover:text-black" onClick={() => setIsMobileMenuOpen(false)}>{item}</a>
-          ))}
-          <a href="#demo" className="mt-5 px-7 py-4 text-center font-bold bg-black text-white rounded-[4px]">Demo testen</a>
-        </div>
-      </div>
+<div className={`fixed top-[68px] left-0 right-0 bg-white border-b border-[#E8E8E8] transition-all duration-500 overflow-hidden z-[899] ${isMobileMenuOpen ? 'max-h-[500px]' : 'max-h-0'}`}>
+  <div className="p-5 flex flex-col gap-1">
+    {['Problem', 'Funktionen', 'Live Demo', 'Preise', 'Referenzen', 'FAQ'].map((item) => (
+      <a key={item} href={`#${item.toLowerCase().replace(' ', '-')}`} className="py-3 text-base font-semibold text-[#666666] border-b border-[#E8E8E8] hover:text-black" onClick={() => setIsMobileMenuOpen(false)}>{item}</a>
+    ))}
+    
+    {!isSignedIn && (
+      <>
+        <a href="/sign-in" className="mt-5 px-7 py-4 text-center font-bold text-black bg-white border border-black rounded-[4px]">Login</a>
+        <a href="/sign-up" className="px-7 py-4 text-center font-bold bg-black text-white rounded-[4px]">Sign Up</a>
+      </>
+    )}
+    
+    <a href="#demo" className="mt-5 px-7 py-4 text-center font-bold bg-black text-white rounded-[4px]">Demo testen</a>
+  </div>
+</div>
 
       <main>
         {/* HERO SECTION */}
