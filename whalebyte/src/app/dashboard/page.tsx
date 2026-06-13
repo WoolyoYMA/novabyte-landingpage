@@ -35,7 +35,7 @@ export default function Dashboard() {
           <h1 className="text-3xl font-black tracking-tight">
             Willkommen bei WhaleByte <span className="text-gray-400">Dashboard</span> 🐳
           </h1>
-          <UserButton afterSignOutUrl="/" />
+          <UserButton />
         </div>
         
         {/* Dashboard Grid */}
