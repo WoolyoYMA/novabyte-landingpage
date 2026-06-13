@@ -82,7 +82,7 @@ export default function LandingPage() {
 
 {/* Wenn EINGELOGGT */}
 {isSignedIn && (
-  <UserButton afterSignOutUrl="/" />
+  <UserButton />
 )}
 
 {/* DEMO-BUTTON (bleibt immer da) */}
