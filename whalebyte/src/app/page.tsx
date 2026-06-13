@@ -1,8 +1,19 @@
 "use client";
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+import { UserButton, useAuth } from "@clerk/nextjs";
 
 export default function LandingPage() {
+  const { isSignedIn, isLoaded } = useAuth();
+  const router = useRouter();
+  
+  useEffect(() => {
+    if (isLoaded && isSignedIn) {
+      router.push('/dashboard');
+    }
+  }, [isLoaded, isSignedIn, router]);
+  
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [demoMode, setDemoMode] = useState<'book' | 'reschedule' | 'cancel'>('book');
@@ -56,9 +67,29 @@ export default function LandingPage() {
             ))}
           </ul>
 
-          <a href="#demo" className="hidden md:block px-7 py-3.5 text-[0.9rem] font-bold bg-black text-white rounded-[4px] transition-all hover:bg-white hover:text-black hover:border-2 hover:border-black">
-            Demo testen
-          </a>
+        <div className="hidden md:flex items-center gap-4">
+  {/* Wenn NICHT eingeloggt */}
+{!isSignedIn && (
+  <>
+    <a href="/sign-in" className="px-5 py-2 text-[0.85rem] font-bold text-black bg-white border border-black rounded-[4px] transition-all hover:bg-black hover:text-white">
+      Login
+    </a>
+    <a href="/sign-up" className="px-7 py-3.5 text-[0.9rem] font-bold bg-black text-white rounded-[4px] transition-all hover:bg-white hover:text-black hover:border-2 hover:border-black">
+      Sign Up
+    </a>
+  </>
+)}
+
+{/* Wenn EINGELOGGT */}
+{isSignedIn && (
+  <UserButton afterSignOutUrl="/" />
+)}
+
+{/* DEMO-BUTTON (bleibt immer da) */}
+<a href="#demo" className="px-7 py-3.5 text-[0.9rem] font-bold bg-black text-white rounded-[4px] transition-all hover:bg-white hover:text-black hover:border-2 hover:border-black">
+  Demo testen
+</a>
+</div>
 
           <button className="md:hidden flex flex-col gap-1.5 p-1.5" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
             <span className={`block w-5 h-0.5 bg-black transition-transform ${isMobileMenuOpen ? 'translate-y-1.5 rotate-45' : ''}`}></span>
