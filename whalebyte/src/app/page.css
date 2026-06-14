@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+/* Wir schreiben das Body-Styling jetzt in normales CSS, 
+   damit der Vercel-Compiler nicht abstürzt */
+body {
+  background-color: #FFFFFF;
+  color: #0A0A0A;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Marquee Animation */
+@keyframes marqueeRoll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marqueeRoll 40s linear infinite;
+}
+
+/* Divider Sweep Animation */
+@keyframes dividerSweep {
+  0% { left: -100%; opacity: 0; }
+  20% { opacity: 1; }
+  100% { left: 100%; opacity: 0; }
+}
+.animate-sweep {
+  animation: dividerSweep 3s ease-in-out forwards;
+}
+
+/* Demo Timeline Animations */
+@keyframes flyMail { 0%{left:-32px;opacity:0}12%{opacity:1}80%{left:68%;opacity:1}100%{left:80%;opacity:0} }
+@keyframes boxPulse { 0%,75%{transform:scale(1)}85%{transform:scale(1.18)}100%{transform:scale(1)} }
+@keyframes ring { 0%{transform:scale(.6) translateX(0);opacity:0}20%{opacity:1}100%{transform:scale(1.8) translateX(84px);opacity:0} }
+@keyframes bellMove { 0%{transform:translateX(0) scale(1)}35%{transform:translateX(0) scale(1.12)}70%{transform:translateX(4px) scale(1.08)}100%{transform:translateX(0) scale(1)} }
+
+.anim-fly-mail { animation: flyMail 1.2s ease-in-out forwards; }
+.anim-box-pulse { animation: boxPulse 1.2s ease-in-out forwards; }
+.anim-ring { animation: ring 1.1s ease-out forwards; }
+.anim-bell-move { animation: bellMove 1.1s ease-out forwards; }

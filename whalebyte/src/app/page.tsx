@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { UserButton, useAuth } from "@clerk/nextjs";
+import "./page.css";
 
 export default function LandingPage() {
   const { isSignedIn, isLoaded } = useAuth();
